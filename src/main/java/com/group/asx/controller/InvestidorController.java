@@ -1,6 +1,6 @@
 package com.group.asx.controller;
 
-import com.group.asx.dto.InvestidorCadastroDto;
+import com.group.asx.dto.CadastroRequestDTO;
 import com.group.asx.service.InvestidorService;
 import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
@@ -20,7 +20,7 @@ public class InvestidorController {
     }
 
     @PostMapping
-    public ResponseEntity<String> cadastrar(@Valid @RequestBody InvestidorCadastroDto investidorCadastroDto){
+    public ResponseEntity<String> cadastrar(@Valid @RequestBody CadastroRequestDTO investidorCadastroDto){
         investidorService.cadastrar(investidorCadastroDto);
         return ResponseEntity.status(HttpStatus.CREATED).body("Cadastro efetuado com sucesso!");
     }

@@ -1,7 +1,7 @@
 package com.group.asx.service;
 
 import com.group.asx.domain.Investidor;
-import com.group.asx.dto.InvestidorCadastroDto;
+import com.group.asx.dto.CadastroRequestDTO;
 import com.group.asx.exception.BusinessException;
 import com.group.asx.repository.InvestidorRepository;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -17,7 +17,7 @@ public class InvestidorService {
         this.passwordEncoder = passwordEncoder;
     }
 
-    public void cadastrar(InvestidorCadastroDto cadastroDto){
+    public void cadastrar(CadastroRequestDTO cadastroDto){
         if (!(cadastroDto.senha().equals(cadastroDto.confirmacaoSenha()))){
             throw new BusinessException("Senha diferente da confirmação de senha");
         }
