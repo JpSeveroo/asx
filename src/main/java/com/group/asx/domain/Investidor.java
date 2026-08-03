@@ -1,9 +1,7 @@
 package com.group.asx.domain;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.PrePersist;
-import jakarta.persistence.Table;
+import com.group.asx.domain.enums.StatusUsuario;
+import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -27,7 +25,8 @@ public class Investidor extends Usuario{
 
     private LocalDateTime dataCriacao;
 
-    private String status;
+    @Enumerated(EnumType.STRING)
+    private StatusUsuario status;
 
     @Column(nullable = false)
     private boolean confirmouMaioridade;
@@ -39,7 +38,7 @@ public class Investidor extends Usuario{
     protected void onCreate() {
         super.onCreateUsuario();
         this.dataCriacao = LocalDateTime.now();
-        this.status = "ATIVO";
+        this.status = StatusUsuario.ATIVO;
         this.qtdTemporadasDisputadas = 0;
     }
 }
