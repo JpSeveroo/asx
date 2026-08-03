@@ -35,16 +35,11 @@ public class Investidor extends Usuario{
     @Column(nullable = false)
     private boolean aceitouTermos;
 
-    private int tentativasLogin;
-
-    private LocalDateTime bloqueadoAte;
-
     @PrePersist
     protected void onCreate() {
+        super.onCreateUsuario();
         this.dataCriacao = LocalDateTime.now();
         this.status = "ATIVO";
         this.qtdTemporadasDisputadas = 0;
-        this.tentativasLogin = 0;
-        this. bloqueadoAte = null;
     }
 }
